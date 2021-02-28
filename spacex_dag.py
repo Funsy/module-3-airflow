@@ -14,7 +14,7 @@ default_args = {
     "retry_delay": timedelta(minutes=5),
 }
 
-for rocket in ['all', 'falcon1', 'falcon9', 'falconheavy']:
+for rocket in ["all", "falcon1", "falcon9", "falconheavy"]:
     dag = DAG("spacex", default_args=default_args, schedule_interval="0 0 1 1 *")
     t1 = BashOperator(
         task_id="get_data",
