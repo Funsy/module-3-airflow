@@ -15,7 +15,7 @@ default_args = {
 }
 
 dag = DAG("spacex", default_args=default_args, schedule_interval="0 0 1 1 *")
-rocket_list = ['all', 'falcon1', 'falcon9', 'falconheavy']
+rocket_list = ['falcon1', 'falcon9', 'falconheavy', 'all']
 
 with dag:
     for i in rocket_list:
