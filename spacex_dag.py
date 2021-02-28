@@ -32,4 +32,4 @@ with dag:
             dag=dag
         )
 
-        t1 >> t2
+        task1 >> task2
