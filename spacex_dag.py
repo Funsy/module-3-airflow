@@ -20,7 +20,7 @@ rocket_list = ['falcon1', 'falcon9', 'falconheavy', 'all']
 for i in rocket_list:
     t1 = BashOperator(
         task_id="get_data_" + str(i),
-        bash_command="python3 /root/airflow/dags/spacex/load_launches.py -y {{{{ execution_date.year }}}} -o /var/data {}".format('' if i == 'all' else -r i),
+        bash_command="python3 /root/airflow/dags/spacex/load_launches.py -y {{{{ execution_date.year }}}} -o /var/data{}".format('' if i == 'all' else ' -r ' + i),
         dag=dag)
 
     t2 = BashOperator(
