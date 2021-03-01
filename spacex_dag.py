@@ -19,12 +19,12 @@ rocket_list = ['falcon1', 'falcon9', 'falconheavy', 'all']
 
 for i in rocket_list:
     t1 = BashOperator(
-        task_id="get_data",
+        task_id="get_data_" + str(i),
         bash_command="python3 /root/airflow/dags/spacex/load_launches.py -y {{{{ execution_date.year }}}} -o /var/data -r {}".format('' if i == 'all' else i),
         dag=dag)
 
     t2 = BashOperator(
-        task_id="print_data",
+        task_id="print_data_" + str(i),
         bash_command="cat /var/data/year={{ execution_date.year }}/rocket={{ params.rocket }}/data.csv",
         params={"rocket": i}, # falcon1/falcon9/falconheavy
         dag=dag)
